@@ -1,7 +1,7 @@
 services:
   postgres:
     image: postgres:latest
-    container_name: postgres-db
+    container_name: postgres-users
     restart: always
     ports:
       - "5432:5432"
@@ -12,10 +12,9 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data
 
-      
-  postgres:
+  postgres_beto:
     image: postgres:latest
-    container_name: postgres-db
+    container_name: postgres-beto
     restart: always
     ports:
       - "3000:5432"
