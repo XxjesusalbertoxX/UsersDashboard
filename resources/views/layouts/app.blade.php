@@ -15,6 +15,7 @@
             @include('layouts.navigation')
 
     {{-- Contenido dinámico --}}
+            @include('main.carousel')
     <main class="p-6">
         @yield('content')
     </main>

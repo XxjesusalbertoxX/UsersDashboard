@@ -1,0 +1,17 @@
+.carousel-indicators-bg {
+    background-color: #898989;
+    border-radius: 5px;
+}
+
+.carousel-next-button {
+    background-color: #898989;
+    border-radius: 5px;
+}
+
+.carousel-item img {
+    min-width: 90%;
+    width: 90%;
+    height: 80vh;
+    object-fit: contain; /* Ajusta imagen sin cortes, puede dejar espacio vacío */
+    background-color: #000; /* opcional, para ver esos espacios */
+}
