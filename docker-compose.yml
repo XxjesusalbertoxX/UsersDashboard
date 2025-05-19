@@ -8,23 +8,9 @@ services:
     environment:
       POSTGRES_USER: admin
       POSTGRES_PASSWORD: admin123
-      POSTGRES_DB: db-users
+      POSTGRES_DB: db-tourneyhub
     volumes:
       - postgres_data:/var/lib/postgresql/data
 
-  postgres_beto:
-    image: postgres:latest
-    container_name: postgres-beto
-    restart: always
-    ports:
-      - "3005:5432"
-    environment:
-      POSTGRES_USER: admin
-      POSTGRES_PASSWORD: admin123
-      POSTGRES_DB: db-beto
-    volumes:
-      - postgres_data_beto:/var/lib/postgresql/data
-
 volumes:
-  postgres_data_beto:
   postgres_data:
