@@ -15,17 +15,38 @@ class TournamentFactory extends Factory
      * @return array<string, mixed>
      */
     public function definition()
-    {
-        $startDate = $this->faker->dateTimeBetween('now', '+1 month');
-        $endDate = (clone $startDate)->modify('+7 days');
+{
+    $status = $this->faker->randomElement(['upcoming', 'ongoing', 'finished']);
 
-        return [
-            'name' => $this->faker->word() . ' Cup',
-            'description' => $this->faker->sentence(10),
-            'type' => $this->faker->randomElement(['single', 'double']),
-            'start_date' => $startDate->format('Y-m-d'),
-            'end_date' => $endDate->format('Y-m-d'),
-            'status' => $this->faker->randomElement(['upcoming', 'ongoing', 'finished']),
-        ];
+    switch ($status) {
+        case 'finished':
+            // 1 a 30 días atrás
+            $endDate = $this->faker->dateTimeBetween('-30 days', '-1 days');
+            $startDate = (clone $endDate)->modify('-7 days');
+            break;
+
+        case 'ongoing':
+            // ya empezados
+            $startDate = $this->faker->dateTimeBetween('-6 days', 'now');
+            $endDate = (clone $startDate)->modify('+7 days');
+            break;
+
+        case 'upcoming':
+        default:
+            // empezaran
+            $startDate = $this->faker->dateTimeBetween('now', '+30 days');
+            $endDate = (clone $startDate)->modify('+7 days');
+            break;
     }
+
+    return [
+        'name' => $this->faker->word() . ' Cup',
+        'description' => $this->faker->sentence(10),
+        'type' => $this->faker->randomElement(['single', 'double']),
+        'start_date' => $startDate->format('Y-m-d'),
+        'end_date' => $endDate->format('Y-m-d'),
+        'status' => $status,
+    ];
+}
+
 }

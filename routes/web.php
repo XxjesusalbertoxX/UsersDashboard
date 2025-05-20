@@ -14,7 +14,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', fn() => view('home'))->name('home');
 
 Route::get('/usuarios', fn() => view('users.index'))->name('users.index');
 

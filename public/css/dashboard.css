@@ -1,0 +1,33 @@
+.chart {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 20px;
+  height: 300px;
+  border-left: 2px solid #333;
+  border-bottom: 2px solid #333;
+  padding: 20px;
+}
+
+.bar {
+  width: 100px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  position: relative;
+  transition: height 0.5s;
+  color: white;
+  font-weight: bold;
+  font-size: 14px;
+  border-radius: 5px 5px 0 0;
+  text-align: center;
+  padding: 5px;
+}
+
+.bar.male {
+  background-color: #007bff;
+}
+
+.bar.female {
+  background-color: #e83e8c;
+}

@@ -37,7 +37,7 @@
           <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
             <li><a class="dropdown-item" href="#">{{ __('Mi perfil') }}</a></li>
             <li><a class="dropdown-item" href="#">{{ __('Configuración') }}</a></li>
-            <li><a class="dropdown-item" href="#">{{ __('Ir al dashboard') }}</a></li>
+            <li><a class="dropdown-item" href="{{Route('dashboard')}}">{{ __('Ir al dashboard') }}</a></li>
             <li><hr class="dropdown-divider"></li>
             <li>
               <form method="POST" action="{{ route('logout') }}">

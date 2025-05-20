@@ -1,4 +1,4 @@
-<div class="d-flex justify-content-center">
+<div class="d-flex justify-content-center" style="background-color: #29333c;">
   <div id="carouselExampleIndicators" class="carousel slide mb-4" data-bs-ride="carousel">
     <div class="carousel-indicators"">
       <div class="carousel-indicators-bg">
