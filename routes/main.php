@@ -8,3 +8,9 @@ use App\Http\Controllers\TournamentController;
     Route::get('/tournaments/{id}', [TournamentController::class, 'show'])->name('api.tournaments.show');
 
     Route::get('dashboard', [App\Http\Controllers\MetricController::class, 'index'])->name('dashboard');
+
+    Route::get('users/create', [App\Http\Controllers\UserController::class, 'create'])->name('users');
+    Route::post('users/store', [App\Http\Controllers\UserController::class, 'store'])->name('users.store');
+    Route::get('users/{user}/edit', [App\Http\Controllers\UserController::class, 'edit'])->name('users.edit');
+    Route::post('users/update/{id}', [App\Http\Controllers\UserController::class, 'update'])->name('users.update');
+    Route::post('users/delete/{id}', [App\Http\Controllers\UserController::class, 'destroy'])->name('users.destroy');

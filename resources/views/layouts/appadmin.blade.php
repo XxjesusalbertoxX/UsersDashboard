@@ -35,7 +35,13 @@ body {
        class="bg-dark text-white">
     @include('layouts.sidebar')
   </nav>
-
+  <header class="d-flex justify-content-center ">
+    <h3>
+        <b>
+            @yield('titleheader')
+        </b>
+    </h3>
+  </header>
   <!-- Contenido principal -->
   <div id="main-content"
        style="position: relative; z-index: 1; height: 100vh; overflow-y: auto; padding: 20px;">
