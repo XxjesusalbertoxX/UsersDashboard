@@ -1,33 +1,55 @@
-.chart {
+.dashboard-container {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    padding: 20px;
+}
+
+.first-row {
+    height: 80px;
+    align-items: center;
+    justify-content: center;
+}
+
+.second-row {
+    justify-content: space-around;
+}
+
+.chart-container {
+    flex: 1;
+    min-width: 300px;
+}
+
+.chart, .combined-chart {
   display: flex;
   align-items: flex-end;
-  justify-content: center;
-  gap: 20px;
-  height: 300px;
+  justify-content: space-evenly;
+  height: 250px;        /* un poco menos para que no crezcan tanto */
   border-left: 2px solid #333;
   border-bottom: 2px solid #333;
-  padding: 20px;
+  padding: 10px;
+  gap: 15px;
 }
 
 .bar {
-  width: 100px;
+  width: 60px;          /* barras más delgadas */
   display: flex;
   align-items: flex-end;
   justify-content: center;
-  position: relative;
-  transition: height 0.5s;
+  border-radius: 5px 5px 0 0;
   color: white;
   font-weight: bold;
-  font-size: 14px;
-  border-radius: 5px 5px 0 0;
   text-align: center;
-  padding: 5px;
+  padding: 2px;
 }
 
-.bar.male {
-  background-color: #007bff;
-}
+/* Colores y variantes iguales a antes */
+.bar.male       { background-color: #007bff; }
+.bar.female     { background-color: #e83e8c; }
+.bar.minor      { background-color: #ffc107; }
+.bar.adult      { background-color: #28a745; }
+.bar.male-adult { background-color: #0056b3; }
+.bar.male-minor { background-color: #66b0ff; }
+.bar.female-adult { background-color: #c2185b; }
+.bar.female-minor { background-color: #f48fb1; }
 
-.bar.female {
-  background-color: #e83e8c;
-}

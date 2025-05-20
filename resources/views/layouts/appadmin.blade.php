@@ -9,23 +9,42 @@
     <link rel="stylesheet" href="{{ asset('css/sidebar.css') }}">
     <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
     @section('styles')
+    <style>
+        #sidebar {
+  transition: margin-left 0.3s;
+}
+
+#main-content {
+  /* si tienes un header, ajusta padding-top en consecuencia */
+  padding-top: 20px;
+  box-sizing: border-box;
+}
+
+/* opcional: ocultar scroll del body y usar solo el interno */
+body {
+  overflow: hidden;
+}
+
+    </style>
 </head>
-<body>
-    <header>
-        @yield('header')
-    </header>
+<body style="overflow-x: hidden; overflow-y: auto;">
+    <div class="">
+  <!-- Sidebar -->
+  <nav id="sidebar"
+       style="position: fixed; width: 280px; height: 100vh; z-index: 1000;"
+       class="bg-dark text-white">
+    @include('layouts.sidebar')
+  </nav>
 
-    <div class="d-flex">
-        <div style="display:none; position: fixed; width: 280px; min-height: 100vh; z-index: 5;" class="bg-dark text-white">
-            @include('layouts.sidebar')
-        </div>
+  <!-- Contenido principal -->
+  <div id="main-content"
+       style="position: relative; z-index: 1; height: 100vh; overflow-y: auto; padding: 20px;">
+    <main>
+      @yield('content')
+    </main>
+  </div>
+</div>
 
-        <div style="position: fixed; z-index: 4;">
-            <main class="flex-grow-1">
-                @yield('content')
-            </main>
-        </div>
-    </div>
 
 </body>
 </html>
