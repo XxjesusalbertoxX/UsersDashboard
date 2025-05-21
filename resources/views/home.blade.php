@@ -69,7 +69,7 @@
                   </p>
 
                   @auth
-                    <a href="{{ route('tournaments.show', $torneo) }}" class="btn btn-primary w-100 mt-auto">
+                    <a href="#" class="btn btn-primary w-100 mt-auto">
                       {{ __('Inscribirse') }}
                     </a>
                   @else

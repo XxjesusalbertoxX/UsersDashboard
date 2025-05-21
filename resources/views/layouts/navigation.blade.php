@@ -14,7 +14,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mb-2 mb-lg-0 mx-5">
         <li class="nav-item mx-2">
-          <a class="nav-link active" aria-current="page" href="#">{{ __('Inicio') }}</a>
+          <a class="nav-link" aria-current="page" href="#">{{ __('Inicio') }}</a>
         </li>
         <li class="nav-item mx-2">
           <a class="nav-link" href="#">{{ __('Inscripciones') }}</a>
@@ -28,6 +28,11 @@
       </ul>
 
       <ul class="navbar-nav ms-auto">
+        @guest
+          <li class="nav-item">
+            <a class="btn btn-primary mx-2" href="{{ route('login') }}">Iniciar sesión</a>
+          </li>
+        @else
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="userDropdown" role="button"
              data-bs-toggle="dropdown" aria-expanded="false">
@@ -37,7 +42,9 @@
           <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
             <li><a class="dropdown-item" href="#">{{ __('Mi perfil') }}</a></li>
             <li><a class="dropdown-item" href="#">{{ __('Configuración') }}</a></li>
-            <li><a class="dropdown-item" href="{{Route('dashboard')}}">{{ __('Ir al dashboard') }}</a></li>
+            @if (Auth::user()->is_admin)
+              <li><a class="dropdown-item" href="{{ route('dashboard') }}">{{ __('Ir al dashboard') }}</a></li>
+            @endif
             <li><hr class="dropdown-divider"></li>
             <li>
               <form method="POST" action="{{ route('logout') }}">
@@ -47,6 +54,7 @@
             </li>
           </ul>
         </li>
+        @endguest
       </ul>
     </div>
   </div>

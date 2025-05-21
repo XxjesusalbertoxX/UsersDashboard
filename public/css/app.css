@@ -910,9 +910,6 @@ select {
 .mt-auto {
   margin-top: auto;
 }
-.ms-3 {
-  margin-inline-start: 0.75rem;
-}
 .block {
   display: block;
 }
@@ -1017,6 +1014,9 @@ select {
 }
 .grid-cols-1 {
   grid-template-columns: repeat(1, minmax(0, 1fr));
+}
+.flex-row {
+  flex-direction: row;
 }
 .flex-col {
   flex-direction: column;
@@ -1160,6 +1160,9 @@ select {
 }
 .p-6 {
   padding: 1.5rem;
+}
+.p-0 {
+  padding: 0px;
 }
 .px-1 {
   padding-left: 0.25rem;
