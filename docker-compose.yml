@@ -1,4 +1,37 @@
+version: "3.8"
+
 services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: laravel-app
+    restart: always
+    depends_on:
+      - postgres
+      - postfix
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - .:/var/www/html
+      - ./docker/certs:/etc/letsencrypt/live
+    environment:
+      APP_ENV: production
+      APP_KEY: base64:...
+      DB_HOST: postgres
+      DB_DATABASE: db-tourneyhub
+      DB_USERNAME: admin
+      DB_PASSWORD: admin123
+      MAIL_MAILER: smtp
+      MAIL_HOST: postfix
+      MAIL_PORT: 587
+      MAIL_USERNAME: your-email@gmail.com
+      MAIL_PASSWORD: your-app-password
+      MAIL_ENCRYPTION: tls
+      MAIL_FROM_ADDRESS: your-email@gmail.com
+      MAIL_FROM_NAME: "TourneyHub"
+
   postgres:
     image: postgres:latest
     container_name: postgres-users
@@ -11,6 +44,26 @@ services:
       POSTGRES_DB: db-tourneyhub
     volumes:
       - postgres_data:/var/lib/postgresql/data
+
+  certbot:
+    image: certbot/certbot
+    container_name: certbot
+    volumes:
+      - ./docker/certs:/etc/letsencrypt
+      - ./docker/certbot/www:/var/www/certbot
+    command: certonly --webroot --webroot-path=/var/www/certbot --email your-email@gmail.com --agree-tos --no-eff-email -d atenasoficial.com -d www.atenasoficial.com
+
+  postfix:
+    build:
+      context: ./docker/postfix
+      dockerfile: Dockerfile
+    container_name: postfix
+    restart: always
+    environment:
+      RELAY_HOST: smtp.gmail.com
+      RELAY_PORT: 587
+      SMTP_USER: your-email@gmail.com
+      SMTP_PASS: your-app-password
 
 volumes:
   postgres_data:
