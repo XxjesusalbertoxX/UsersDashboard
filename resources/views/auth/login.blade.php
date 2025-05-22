@@ -28,11 +28,11 @@
         }
     </style>
 </head>
-<body>
+<body style="background-color: #29333c;">
 <div class="container py-5">
     <div class="row justify-content-center">
         <div class="col-md-6 col-lg-5">
-            <div class="card shadow">
+            <div class="card shadow" style="background-color: #906a24;">
                 <div class="card-header text-center">
                     <h4>Iniciar Sesión</h4>
                 </div>

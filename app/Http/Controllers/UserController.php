@@ -80,6 +80,6 @@ class UserController extends Controller
     public function destroy($id)
     {
         User::where('id_user', $id)->delete();
-        return redirect()->route('admin.users.index')->with('success', 'Usuario eliminado correctamente.');
+        return redirect()->route('users')->with('success', 'Usuario eliminado correctamente.');
     }
 }

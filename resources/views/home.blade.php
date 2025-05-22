@@ -16,8 +16,7 @@
             
             @guest
             <h2 >{{ __('¿Listo para competir?') }}</h2>
-            <p class="lead">{{ __('Regístrate y participa en torneos emocionantes.') }}</p>
-            <a href="{{ route('register') }}" class="btn btn-primary mx-2">{{ __('Registrarse') }}</a>
+            <p class="lead">{{ __('Inicia sesion y participa en torneos emocionantes.') }}</p>
             <a href="{{ route('login') }}" class="btn btn-outline-light mx-2">{{ __('Iniciar sesión') }}</a>
             @endguest
         </section>

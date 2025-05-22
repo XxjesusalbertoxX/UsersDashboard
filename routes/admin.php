@@ -9,5 +9,5 @@ Route::middleware(['auth','is_admin'])->group(function () {
     Route::put('users/update/{id}', [App\Http\Controllers\UserController::class, 'update'])->name('users.update');
     Route::get('users/add/create', [App\Http\Controllers\UserController::class, 'adduser'])->name('users.add.create');
     Route::post('users/add/store', [App\Http\Controllers\UserController::class, 'store'])->name('users.store');
-    Route::post('users/delete/{id}', [App\Http\Controllers\UserController::class, 'destroy'])->name('users.destroy');
+    Route::delete('users/delete/{id}', [App\Http\Controllers\UserController::class, 'destroy'])->name('users.destroy');
 });
