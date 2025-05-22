@@ -1,5 +1,4 @@
-version: "3.8"
-
+## ibkc olvz voed qzxg
 services:
   app:
     build:
@@ -15,10 +14,10 @@ services:
       - "443:443"
     volumes:
       - .:/var/www/html
-      - ./docker/certs:/etc/letsencrypt/live
+      - ./docker/certs:/etc/letsencrypt
     environment:
       APP_ENV: production
-      APP_KEY: base64:...
+      APP_KEY: base64:ibkc olvz voed qzxg
       DB_HOST: postgres
       DB_DATABASE: db-tourneyhub
       DB_USERNAME: admin
@@ -26,10 +25,10 @@ services:
       MAIL_MAILER: smtp
       MAIL_HOST: postfix
       MAIL_PORT: 587
-      MAIL_USERNAME: your-email@gmail.com
-      MAIL_PASSWORD: your-app-password
+      MAIL_USERNAME: villarrealperezjesusalberto@gmail.com
+      MAIL_PASSWORD: ibkc olvz voed qzxg
       MAIL_ENCRYPTION: tls
-      MAIL_FROM_ADDRESS: your-email@gmail.com
+      MAIL_FROM_ADDRESS: villarrealperezjesusalberto@gmail.com
       MAIL_FROM_NAME: "TourneyHub"
 
   postgres:
@@ -51,7 +50,7 @@ services:
     volumes:
       - ./docker/certs:/etc/letsencrypt
       - ./docker/certbot/www:/var/www/certbot
-    command: certonly --webroot --webroot-path=/var/www/certbot --email your-email@gmail.com --agree-tos --no-eff-email -d atenasoficial.com -d www.atenasoficial.com
+    command: certonly --webroot --webroot-path=/var/www/certbot --email villarrealperezjesusalberto@gmail.com --agree-tos --no-eff-email -d mishistema.servecounterstrike.com
 
   postfix:
     build:
@@ -62,8 +61,8 @@ services:
     environment:
       RELAY_HOST: smtp.gmail.com
       RELAY_PORT: 587
-      SMTP_USER: your-email@gmail.com
-      SMTP_PASS: your-app-password
+      SMTP_USER: villarrealperezjesusalberto@gmail.com
+      SMTP_PASS: ibkc olvz voed qzxg
 
 volumes:
   postgres_data:

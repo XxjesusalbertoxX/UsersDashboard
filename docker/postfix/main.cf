@@ -1,0 +1,13 @@
+# main.cf (simplificado)
+relayhost = [${RELAY_HOST}]:${RELAY_PORT}
+
+smtp_sasl_auth_enable = yes
+smtp_sasl_password_maps = static:${SMTP_USER}:${SMTP_PASS}
+smtp_sasl_security_options = noanonymous
+smtp_use_tls = yes
+smtp_tls_security_level = encrypt
+smtp_tls_CAfile = /etc/ssl/certs/ca-certificates.crt
+
+myhostname = postfix
+myorigin = /etc/mailname
+inet_interfaces = all
