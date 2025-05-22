@@ -1,4 +1,4 @@
-FROM php:8.1-apache
+FROM php:8.3-apache
 
 # Instalar extensiones necesarias
 RUN apt-get update && apt-get install -y \
@@ -19,8 +19,10 @@ RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cac
 
 WORKDIR /var/www/html
 
+RUN git config --global --add safe.directory /var/www/html
 # Instalar Composer (usa la versión oficial)
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+
 
 # Instalar dependencias Laravel sin dev y optimizando
 RUN composer install --no-dev --optimize-autoloader
