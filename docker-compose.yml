@@ -16,24 +16,7 @@ services:
       - .:/var/www/html
       - /etc/letsencrypt:/etc/letsencrypt:ro
       - /var/www/html/vendor
-      - ./.env:/var/www/html/.env
-
-    environment:
-      APP_ENV: production
-      APP_KEY: 
-      APP_DEBUG: true
-      DB_HOST: postgres
-      DB_DATABASE: db-tourneyhub
-      DB_USERNAME: admin
-      DB_PASSWORD: admin123
-      MAIL_MAILER: smtp
-      MAIL_HOST: postfix
-      MAIL_PORT: 587
-      MAIL_USERNAME: villarrealperezjesusalberto@gmail.com
-      MAIL_PASSWORD: ibkc olvz voed qzxg
-      MAIL_ENCRYPTION: tls
-      MAIL_FROM_ADDRESS: villarrealperezjesusalberto@gmail.com
-      MAIL_FROM_NAME: "TourneyHub"
+      - ./.env:/var/www/html/.env      
 
   postgres:
     image: postgres:latest
