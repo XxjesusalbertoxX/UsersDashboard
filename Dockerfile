@@ -30,4 +30,9 @@ EXPOSE 80 443
 RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache && \
     chmod -R 775 /var/www/html/storage /var/www/html/bootstrap/cache
 
-CMD ["apache2-foreground"]
+CMD php artisan config:clear && \
+    if ! grep -q "^APP_KEY=" .env; then \
+        php artisan key:generate --force; \
+    fi && \
+    php artisan migrate --force && \
+    apache2-foreground
