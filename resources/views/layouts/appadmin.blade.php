@@ -27,7 +27,8 @@
         </b>
     </h3>
   </header>
-  <!-- Contenido principal -->
+
+  <!-- Main content -->
   <div id="main-content"
        style="position: relative; z-index: 1; height: 100vh; overflow-y: auto; padding: 20px;">
     <main>
@@ -58,8 +59,8 @@
 toastr.options = {
     "closeButton": true,
     "progressBar": true,
-    "positionClass": "toast-top-right", // Cambia a "toast-bottom-left", etc. si quieres
-    "timeOut": "4000", // milisegundos
+    "positionClass": "toast-top-right", 
+    "timeOut": "4000", 
     "extendedTimeOut": "1000",
     "showMethod": "fadeIn",
     "hideMethod": "fadeOut"

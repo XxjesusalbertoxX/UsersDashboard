@@ -20,7 +20,7 @@
                     <div class="col-md-6">
                         <label for="name" class="form-label">Nombre</label>
                         <input type="text" class="form-control @error('name') is-invalid @enderror"
-                               id="name" name="name" value="{{ old('name', $user->name) }}" required>
+                               id="name" name="name" value="{{ old('name', $user->name) }}">
                         @error('name')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
@@ -28,7 +28,7 @@
                     <div class="col-md-6">
                         <label for="lastName" class="form-label">Apellido</label>
                         <input type="text" class="form-control @error('lastName') is-invalid @enderror"
-                               id="lastName" name="lastName" value="{{ old('lastName', $user->lastName) }}" required>
+                               id="lastName" name="lastName" value="{{ old('lastName', $user->lastName) }}">
                         @error('lastName')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
@@ -38,7 +38,7 @@
                 <div class="row mb-3">
                     <div class="col-md-6">
                         <label for="genre" class="form-label">Género</label>
-                        <select name="genre" id="genre" class="form-select @error('genre') is-invalid @enderror" required>
+                        <select name="genre" id="genre" class="form-select @error('genre') is-invalid @enderror">
                             <option value="">Seleccione...</option>
                             <option value="male" {{ old('genre', $user->genre) === 'male' ? 'selected' : '' }}>Hombre</option>
                             <option value="female" {{ old('genre', $user->genre) === 'female' ? 'selected' : '' }}>Mujer</option>
@@ -50,7 +50,7 @@
                     <div class="col-md-6">
                         <label for="age" class="form-label">Edad</label>
                         <input type="number" class="form-control @error('age') is-invalid @enderror"
-                               id="age" name="age" value="{{ old('age', $user->age) }}" required>
+                               id="age" name="age" value="{{ old('age', $user->age) }}">
                         @error('age')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
@@ -60,7 +60,7 @@
                 <div class="mb-3">
                     <label for="email" class="form-label">Correo electrónico</label>
                     <input type="email" class="form-control @error('email') is-invalid @enderror"
-                           id="email" name="email" value="{{ old('email', $user->email) }}" required>
+                           id="email" name="email" value="{{ old('email', $user->email) }}">
                     @error('email')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror

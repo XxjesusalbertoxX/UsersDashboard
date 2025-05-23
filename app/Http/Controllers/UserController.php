@@ -21,15 +21,41 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'name' => 'required|string|max:255',
-            'lastName' => 'required|string|max:255',
+            'name' => [
+                'required',
+                'string',
+                'max:255',
+                'regex:/^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s\-]+$/u'
+            ],
+            'lastName' => [
+                'required',
+                'string',
+                'max:255',
+                'regex:/^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s\-]+$/u'
+            ],
             'genre' => 'required|in:male,female',
             'age' => 'required|integer|min:0',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|string|min:6|confirmed',
             'is_admin' => 'nullable|boolean',
+        ], [
+            'name.required' => 'El nombre es obligatorio.',
+            'name.regex' => 'El nombre solo puede contener letras, espacios y guiones.',
+            'lastName.required' => 'El apellido es obligatorio.',
+            'lastName.regex' => 'El apellido solo puede contener letras, espacios y guiones.',
+            'genre.required' => 'El género es obligatorio.',
+            'genre.in' => 'El género seleccionado no es válido.',
+            'age.required' => 'La edad es obligatoria.',
+            'age.integer' => 'La edad debe ser un número entero.',
+            'age.min' => 'La edad debe ser mayor o igual a 0.',
+            'email.required' => 'El correo electrónico es obligatorio.',
+            'email.email' => 'El correo electrónico no es válido.',
+            'email.unique' => 'El correo electrónico ya está registrado.',
+            'password.required' => 'La contraseña es obligatoria.',
+            'password.min' => 'La contraseña debe tener al menos 6 caracteres.',
+            'password.confirmed' => 'Las contraseñas no coinciden.',
         ]);
-
+    
         $user = new User();
         $user->name = $validated['name'];
         $user->lastName = $validated['lastName'];
@@ -39,8 +65,8 @@ class UserController extends Controller
         $user->password = bcrypt($validated['password']);
         $user->is_admin = $request->has('is_admin');
         $user->save();
-
-        return redirect()->route('users.add.create')->with('success', 'Usuario creado correctamente.');return redirect()->route('admin.users.index')->with('success', 'Usuario creado correctamente.');
+    
+        return redirect()->route('admin.users.index')->with('success', 'Usuario creado correctamente.');
     }
 
     public function edit($id)
@@ -54,14 +80,40 @@ class UserController extends Controller
         $user = User::where('id_user', $id)->firstOrFail();
 
         $validated = $request->validate([
-            'name' => 'required|string|max:255',
-            'lastName' => 'required|string|max:255',
-            'genre' => 'required|in:male,female',
-            'age' => 'required|integer|min:0',
-            'email' => 'required|email|unique:users,email,' . $user->id_user . ',id_user',
-            'password' => 'nullable|string|min:6|confirmed',
-            'is_admin' => 'nullable|boolean',
-        ]);
+        'name' => [
+            'required',
+            'string',
+            'max:255',
+            'regex:/^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s\-]+$/u'
+        ],
+        'lastName' => [
+            'required',
+            'string',
+            'max:255',
+            'regex:/^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s\-]+$/u'
+        ],
+        'genre' => 'required|in:male,female',
+        'age' => 'required|integer|min:0',
+        'email' => 'required|email|unique:users,email',
+        'password' => 'required|string|min:6|confirmed',
+        'is_admin' => 'nullable|boolean',
+    ], [
+        'name.required' => 'El nombre es obligatorio.',
+        'name.regex' => 'El nombre solo puede contener letras, espacios y guiones.',
+        'lastName.required' => 'El apellido es obligatorio.',
+        'lastName.regex' => 'El apellido solo puede contener letras, espacios y guiones.',
+        'genre.required' => 'El género es obligatorio.',
+        'genre.in' => 'El género seleccionado no es válido.',
+        'age.required' => 'La edad es obligatoria.',
+        'age.integer' => 'La edad debe ser un número entero.',
+        'age.min' => 'La edad debe ser mayor o igual a 0.',
+        'email.required' => 'El correo electrónico es obligatorio.',
+        'email.email' => 'El correo electrónico no es válido.',
+        'email.unique' => 'El correo electrónico ya está registrado.',
+        'password.required' => 'La contraseña es obligatoria.',
+        'password.min' => 'La contraseña debe tener al menos 6 caracteres.',
+        'password.confirmed' => 'Las contraseñas no coinciden.',
+    ]);
 
         $user->name = $validated['name'];
         $user->lastName = $validated['lastName'];

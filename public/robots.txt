@@ -1,2 +1,4 @@
 User-agent: *
 Disallow:
+
+Sitemap: https://mishistema.servecounterstrike.com/sitemap.xml

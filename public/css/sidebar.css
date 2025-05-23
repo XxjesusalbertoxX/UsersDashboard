@@ -11,3 +11,27 @@
         background-color: #0d6efd;
         color: #ffffff !important;
     }
+
+    #sidebar.isclose {
+    margin-left: -280px;
+}
+#sidebar.isopen {
+    margin-left: 0;
+}
+#sidebar {
+    transition: margin-left 0.3s;
+}
+#sidebarToggleBtn.isclose {
+    position: fixed;
+    left: 10px;
+    right: auto;
+    top: 10px;
+    z-index: 20;
+}
+#sidebarToggleBtn.isopen {
+    position: absolute;
+    left: auto;
+    right: 16px;
+    top: 10px;
+    z-index: 10;
+}

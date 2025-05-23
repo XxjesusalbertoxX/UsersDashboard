@@ -27,17 +27,16 @@ WORKDIR /var/www/html
 RUN composer install --no-dev --optimize-autoloader
 
 # Ajustar permisos
-RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
-
-EXPOSE 80 443
-
-# Ajustar permisos de storage y cache
 RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache && \
     chmod -R 775 /var/www/html/storage /var/www/html/bootstrap/cache
 
+EXPOSE 80 443
+
+# CMD modificado para generar sitemap
 CMD php artisan config:clear && \
     if ! grep -q "^APP_KEY=" .env; then \
         php artisan key:generate --force; \
     fi && \
     php artisan migrate --force && \
+    php artisan sitemap:generate && \
     apache2-foreground
