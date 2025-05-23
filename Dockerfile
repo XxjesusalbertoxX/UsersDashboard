@@ -22,12 +22,20 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 # Copiar todo el proyecto
 COPY . /var/www/html
 
-# Instalar dependencias Laravel
+# Establecer directorio de trabajo
 WORKDIR /var/www/html
 
+# Configuración git para evitar problemas con safe.directory
 RUN git config --global --add safe.directory /var/www/html
 
+# Instalar dependencias Laravel
 RUN composer install --no-dev --optimize-autoloader
+
+# Publicar vistas del paquete Spatie para sitemap (evita error "No hint path defined for [sitemap]")
+RUN php artisan vendor:publish --provider="Spatie\Sitemap\SitemapServiceProvider" --tag=views
+
+# Limpiar caches para que tome la nueva configuración y vistas
+RUN php artisan config:clear && php artisan cache:clear && php artisan view:clear
 
 # Ajustar permisos
 RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache && \
@@ -35,7 +43,7 @@ RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cac
 
 EXPOSE 80 443
 
-# CMD modificado para generar sitemap
+# CMD modificado para iniciar Apache y ejecutar comandos Laravel al inicio
 CMD php artisan config:clear && \
     if ! grep -q "^APP_KEY=" .env; then \
         php artisan key:generate --force; \
