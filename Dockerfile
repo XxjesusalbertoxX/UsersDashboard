@@ -8,7 +8,7 @@ RUN apt-get update && apt-get install -y \
     git \
     nano \
     libzip-dev \
-    && docker-php-ext-install pdo_pgsql 
+    && docker-php-ext-install pdo_pgsql exif 
 
 # Habilitar mod_rewrite y SSL
 RUN a2enmod rewrite ssl
@@ -24,6 +24,9 @@ COPY . /var/www/html
 
 # Instalar dependencias Laravel
 WORKDIR /var/www/html
+
+RUN git config --global --add safe.directory /var/www/html
+
 RUN composer install --no-dev --optimize-autoloader
 
 # Ajustar permisos
