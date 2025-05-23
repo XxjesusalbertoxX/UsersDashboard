@@ -5,9 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title')</title>
     <title>{{ config('app.name') }} | prueba de pagina</title>
-    <meta name="description" content="Breve descripción del sitio para buscadores.">
+    <meta name="google-site-verification" content="cbwDsLxbYRLaOhXuz9vzxdZXwOcVEWw-IlXOb0Yfx4E" />
+    <meta name="description" content="solo es una prueba de pagina">
+    <meta name="author" content="jesus alberto">
     <meta name="keywords" content="laravel, docker, proyecto, palabras clave">
-    <meta name="author" content="Tu nombre o nombre del equipo">
     <meta name="robots" content="index, follow">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
